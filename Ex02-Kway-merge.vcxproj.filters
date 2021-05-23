@@ -38,9 +38,6 @@
     <ClInclude Include="MainHeader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="InputManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="OutputManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>

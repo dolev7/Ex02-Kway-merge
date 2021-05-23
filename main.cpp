@@ -27,7 +27,7 @@ int main()
 
 		ArrayToSort kWayToSort(n, k, arrayToSort);
 		
-		kWayToSort.KWaySort();
+		//kWayToSort.KWaySort();
 
 		saveArrayToFile(kWayToSort, outFile);
 		outFile.close();

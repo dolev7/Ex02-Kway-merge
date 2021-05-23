@@ -1,6 +1,6 @@
 #include "MainHeader.h"
 
-void getNumbersAndFilesNames(int& n, int& k, string& inputFileName,  string& outputFileName)
+void getNumbersAndFilesNames(int& n, int& k, string& inputFileName, string& outputFileName)
 {
 	string errorName;
 
@@ -21,7 +21,7 @@ void getNumbersAndFilesNames(int& n, int& k, string& inputFileName,  string& out
 	cin >> inputFileName;
 	cout << "Please enter the output file name" << endl;
 	cin >> outputFileName;
-	
+
 }
 
 void loadArrayFromFile(int* arrayToSort, int n, istream& in)
@@ -37,14 +37,21 @@ void loadArrayFromFile(int* arrayToSort, int n, istream& in)
 		while (currentDigitFromFile != '\n')
 		{
 			in.read(rcastc(&currentDigitFromFile), sizeof(currentDigitFromFile));
-			if ((currentDigitFromFile < '0' || currentDigitFromFile > '9') && currentDigitFromFile != '\n')
+			if (currentDigitFromFile == '-' && currentDigitIndex > 0)
+			{
+				throw (errorName = "- wasn't the first char");
+			}
+
+			if ((currentDigitFromFile < '0' || currentDigitFromFile > '9') && currentDigitFromFile != '\n' && currentDigitFromFile != '-')
 			{
 				throw (errorName = "A number in the file was invalid");
 			}
+
 			if (currentDigitFromFile == '\n')
 			{
 				numberReadFromFile[currentDigitIndex] = '\0';
 			}
+
 			numberReadFromFile[currentDigitIndex] = currentDigitFromFile;
 			currentDigitIndex++;
 			if (in.peek() == EOF)
@@ -55,6 +62,7 @@ void loadArrayFromFile(int* arrayToSort, int n, istream& in)
 				}
 				else
 				{
+					numberReadFromFile[currentDigitIndex] = '\0';
 					break;
 				}
 			}

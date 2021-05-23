@@ -1,10 +1,12 @@
 #include "ArrayToSort.h"
+#include "PriorityQueue.h"
 
 namespace KWaySort
 {
     ArrayToSort::ArrayToSort(int n, int k, int* array)
 	{
         this->_arrayToSort = new int[n];
+        this->_heapPointers = new int* [n / k];
 		_size = n; 
         _k = k;
 
@@ -19,11 +21,26 @@ namespace KWaySort
         KWaySortRec(_arrayToSort, _size, _k);
     }
 
-    void ArrayToSort::KWaySortRec(int* _arrayToSort, int  n, int k)
+    void ArrayToSort::KWaySortRec(int* arrayToSort, int  n, int k)
     {
         if (n < k)
         {
-            QuickSort(_arrayToSort, 0, n);
+            QuickSort(arrayToSort, 0, n);
+        }
+
+        //for (int j = 0, int i = 0; i < n; i++, j+= (n / k))
+        //{
+        //    *(_heapPointers + i) = (arrayToSort+j);
+        //    // need to make an array of all pointers to arrays *after* they are sorted in k-size arrays.
+        //    KWaySortRec(arrayToSort + j, n / k, k);
+        //}
+    }
+
+    void ArrayToSort::HeapKWaySort()
+    {
+        for (int i = 0; i < _size / _k; i++)
+        {
+           // PriorityQueue(*_heapPointers, _size / _k)
         }
     }
 

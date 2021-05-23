@@ -147,7 +147,6 @@
     <ClCompile Include="PriorityQueue.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="InputManager.h" />
     <ClInclude Include="MainHeader.h" />
     <ClInclude Include="OutputManager.h" />
     <ClInclude Include="PriorityQueue.h" />
