@@ -23,6 +23,9 @@ namespace KWaySort
 		int getSize() const { return _size; }
 		int* getArray() const { return _arrayToSort; }
 
-		void bubbleSort(double arr[], int n);
+		void KWaySort();
+		void KWaySortRec(int* _arrayToSort, int  n, int k);
+		void QuickSort(int* _arrayToSort, int left, int right);
+		int Partition(int* array, int left, int right);
 	};
 }

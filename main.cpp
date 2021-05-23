@@ -26,7 +26,8 @@ int main()
 		inFile.close();
 
 		ArrayToSort kWayToSort(n, k, arrayToSort);
-		//sort
+		
+		kWayToSort.KWaySort();
 
 		saveArrayToFile(kWayToSort, outFile);
 		outFile.close();

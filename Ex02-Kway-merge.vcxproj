@@ -144,11 +144,13 @@
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="OutputManager.cpp" />
+    <ClCompile Include="PriorityQueue.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="MainHeader.h" />
     <ClInclude Include="OutputManager.h" />
+    <ClInclude Include="PriorityQueue.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
