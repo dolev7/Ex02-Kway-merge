@@ -15,6 +15,7 @@ namespace KWaySort
 		int _k;
 		int* _arrayToSort;
 		int** _heapPointers;
+		int _heapCounter;
 	public:
 		//ctors and dtors
 		ArrayToSort(int n, int k, int* array);
@@ -25,8 +26,10 @@ namespace KWaySort
 		int* getArray() const { return _arrayToSort; }
 
 		void KWaySort();
-		void KWaySortRec(int* _arrayToSort, int  n, int k);
-		void HeapKWaySort();
+		void KWaySortRec(int* _arrayToSort, int  n);
+		void HeapKWayMerge();
+
+		void print(int** subArr);
 
 		void QuickSort(int* _arrayToSort, int left, int right);
 		int Partition(int* array, int left, int right);

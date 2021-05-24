@@ -30,7 +30,7 @@
     <ClCompile Include="OutputManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PriorityQueue.cpp">
+    <ClCompile Include="Heap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,7 +41,7 @@
     <ClInclude Include="OutputManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PriorityQueue.h">
+    <ClInclude Include="Heap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
