@@ -28,6 +28,7 @@ namespace KWaySort
 		void KWaySort();
 		void KWaySortRec(int* _arrayToSort, int  n);
 		void HeapKWayMerge();
+		int* mergeKArrays(int** arr, int* sizes, int k, int totalCount);
 
 		void print(int** subArr);
 

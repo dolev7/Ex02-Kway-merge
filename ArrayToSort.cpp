@@ -34,27 +34,83 @@ namespace KWaySort
 
 		int remainSubArrs = n % _k;
 		int** subArr = new int* [_k];
+		int* sizesArray = new int[_k];
 		for (int i = 0; i < _k - remainSubArrs; i++)
 		{
 			subArr[i] = arrayToSort + i * (n / _k) ;
+			sizesArray[i] = n / _k;
 			KWaySortRec(subArr[i], n / _k);
 		}
 
 		for (int j = 0; j < remainSubArrs; j++) 
 		{
 			subArr[_k- remainSubArrs + j] = arrayToSort + n - ((j + 1) * ((n / _k) + 1));
+			sizesArray[_k - remainSubArrs + j] = n / _k + 1;
 			KWaySortRec(subArr[_k - remainSubArrs + j], (n / _k) + 1);
 		}
-		print(subArr);
-		
+
+		int* sorted = mergeKArrays(subArr, sizesArray, _k, n);
+
+		for (int i = 0; i < n; i++)
+		{
+			_arrayToSort[i] = sorted[i];
+		}
+
+		delete[] sorted;
 	}
 
-	void ArrayToSort::print(int** subArr)
+	int* ArrayToSort::mergeKArrays(int** arr, int* sizes, int k, int totalCount)
 	{
-		for (int i = 0; i < _k; i++)
+		// To store output array
+		int* output = new int[totalCount];
+
+		// Create a min heap with k heap nodes.
+		// Every heap node has first element of an array
+		Node* harr = new Node[k];
+		for (int i = 0; i < k; i++)
 		{
-			cout << *subArr[i] << endl;
+
+			// Store the first element
+			harr[i].data = arr[i][0];
+
+			// index of array
+			harr[i].array_index = i;
+
+			// Index of next element to be stored from the array
+			harr[i].item_index = 1; //todo
 		}
+
+		// Create the heap
+		Heap hp(harr, k);
+
+		// Now one by one get the minimum element from min
+		// heap and replace it with next element of its array
+		for (int count = 0; count < totalCount; count++)
+		{
+			// Get the minimum element and store it in output
+			Node item_to_insert = hp.min();
+			output[count] = item_to_insert.data;
+
+			// Find the next elelement that will replace current
+			// root of heap. The next element belongs to same
+			// array as the current root.
+			if (item_to_insert.item_index < sizes[item_to_insert.array_index]) //todo
+			{
+				item_to_insert.data = arr[item_to_insert.array_index][item_to_insert.item_index];
+				item_to_insert.item_index += 1;
+			}
+			// If root was the last element of its array
+	// INT_MAX is for infinite       
+			else item_to_insert.data = INT_MAX;
+
+			// Replace root with next element of array
+			//hp.deleteMin();
+			//hp.Insert(item_to_insert);
+			//hp.fixHeap(0);
+			hp.replaceMin(item_to_insert);
+		}
+
+		return output;
 	}
 
 	void ArrayToSort::HeapKWayMerge()
