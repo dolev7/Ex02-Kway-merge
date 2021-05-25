@@ -46,7 +46,7 @@ namespace KWaySort
 		}
 		int i = size;
 		size++;
-		while (i > 0 && nodes[Parent(i)].priority > toinsert.priority)
+		while (i > 0 && nodes[Parent(i)].data > toinsert.data)
 		{
 			nodes[i] = nodes[Parent(i)];
 			i = Parent(i);
@@ -71,7 +71,7 @@ namespace KWaySort
 		int min;
 		int left = Left(node);
 		int right = Right(node);
-		if (left < size && (nodes[left].priority < nodes[node].priority))
+		if (left < size && (nodes[left].data < nodes[node].data))
 		{
 			min = left;
 		}
@@ -82,7 +82,7 @@ namespace KWaySort
 
 		if (right < size)
 		{
-			if (nodes[right].priority < nodes[min].priority)
+			if (nodes[right].data < nodes[min].data)
 				min = right;
 		}
 		if (min != node)

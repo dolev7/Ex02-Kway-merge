@@ -8,7 +8,6 @@ namespace KWaySort
 	struct Node
 	{
 		int data;
-		int priority;
 		int array_index;
 		int item_index;
 	};
