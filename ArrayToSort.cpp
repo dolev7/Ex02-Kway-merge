@@ -20,7 +20,6 @@ namespace KWaySort
 	void ArrayToSort::KWaySort()
 	{
 		KWaySortRec(_arrayToSort, _size);
-		//HeapKWayMerge();
 	}
 
 	void ArrayToSort::KWaySortRec(int* arrayToSort, int  n)
@@ -53,7 +52,7 @@ namespace KWaySort
 
 		for (int i = 0; i < n; i++)
 		{
-			_arrayToSort[i] = sorted[i];
+			arrayToSort[i] = sorted[i];
 		}
 
 		delete[] sorted;
@@ -113,13 +112,6 @@ namespace KWaySort
 		return output;
 	}
 
-	void ArrayToSort::HeapKWayMerge()
-	{
-		for (int i = 0; i < _size / _k; i++)
-		{
-			// Heap(*_heapPointers, _size / _k)
-		}
-	}
 
 	void ArrayToSort::QuickSort(int* arrayToSort, int left, int right)
 	{

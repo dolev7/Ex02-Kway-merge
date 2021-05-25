@@ -27,7 +27,7 @@ namespace KWaySort
 
 	public:
 		void fixHeap(int node);
-		void replaceMin(Node x) { nodes[0] = x;  MinHeapify(0); }
+		void replaceMin(Node x) { nodes[0] = x;  MinFixHeap(0); }
 		Heap(Node* unsortedArray, int size) ;
 		~Heap();
 		Node deleteMin() {
@@ -42,19 +42,19 @@ namespace KWaySort
 			fixHeap(0);
 			return min;
 		};
-		void MinHeapify(int i)
+		void MinFixHeap(int i)
 		{
-			int l = Left(i);
-			int r = Right(i);
+			int left = Left(i);
+			int right = Right(i);
 			int smallest = i;
-			if (l < size && nodes[l].data < nodes[i].data)
-				smallest = l;
-			if (r < size && nodes[r].data < nodes[smallest].data)
-				smallest = r;
+			if (left < size && nodes[left].data < nodes[i].data)
+				smallest = left;
+			if (right < size && nodes[right].data < nodes[smallest].data)
+				smallest = right;
 			if (smallest != i)
 			{
 				Swap(nodes[i], nodes[smallest]);
-				MinHeapify(smallest);
+				MinFixHeap(smallest);
 			}
 		}
 		Node min()const { return nodes[0]; }
