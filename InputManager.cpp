@@ -8,9 +8,9 @@ void getNumbersAndFilesNames(int& n, int& k, string& inputFileName, string& outp
 	cin >> n;
 	cout << "Please enter k parameter" << endl;
 	cin >> k;
-	if (n <= 0 || k <= 0)
+	if (n <= 0 || k <= 1)
 	{
-		throw (errorName = "numbers must be positive numbers");
+		throw (errorName = "n must be a positive number, k must be bigger than 1");
 	}
 	if (k > n)
 	{
@@ -42,11 +42,13 @@ void loadArrayFromFile(int* arrayToSort, int n, istream& in)
 				throw (errorName = "- wasn't the first char");
 			}
 
+			//check that character frox text is expected
 			if ((currentDigitFromFile < '0' || currentDigitFromFile > '9') && currentDigitFromFile != '\n' && currentDigitFromFile != '-')
 			{
 				throw (errorName = "A number in the file was invalid");
 			}
 
+			// in case of enter, mark the end of string
 			if (currentDigitFromFile == '\n')
 			{
 				numberReadFromFile[currentDigitIndex] = '\0';
@@ -56,6 +58,7 @@ void loadArrayFromFile(int* arrayToSort, int n, istream& in)
 			currentDigitIndex++;
 			if (in.peek() == EOF)
 			{
+				// check if EOF is sooner than expected
 				if (i != n - 1)
 				{
 					throw (errorName = "there were fewer number in text file than n value");

@@ -8,9 +8,11 @@ namespace KWaySort
 		int size = kWayToSort.getSize();
 		//char newLine = '\n';
 
-		for (int i = 0; i < size; i++)
+		for (int i = 0; i < size-1; i++)
 		{
 			out << arrayToPrint[i] << endl;
 		}
+
+		out << arrayToPrint[size - 1];
 	}
 }

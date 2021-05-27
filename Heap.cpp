@@ -34,7 +34,7 @@ namespace KWaySort
 	void  Heap::floydBuild()
 	{
 		for (int i = size / 2 - 1; i >= 0; i--)
-			fixHeap(i);
+			MinFixHeap(i);
 	}
 
 	void Heap::Insert(Node toinsert)
@@ -54,45 +54,41 @@ namespace KWaySort
 		nodes[i] = toinsert;
 	}
 	
+	void Heap::replaceMin(Node x)
+	{
+		nodes[0] = x;  MinFixHeap(0); 
+	}
+
 	const int Heap::Parent(int node)const
 	{
 		return (node - 1) / 2;
 	}
+
 	const int Heap::Left(int node)const
 	{
 		return (2 * node) + 1;
 	}
+
 	const int Heap::Right(int node)const
 	{
 		return (2 * node) + 2;
 	}
-	void Heap::fixHeap(int node)
-	{
-		int min;
-		int left = Left(node);
-		int right = Right(node);
-		if (left < size && (nodes[left].data < nodes[node].data))
-		{
-			min = left;
-		}
-		else
-		{
-			min = node;
-		}
 
-		if (right < size)
+	void Heap::MinFixHeap(int i)
+	{
+		int left = Left(i);
+		int right = Right(i);
+		int smallest = i;
+		if (left < size && nodes[left].data < nodes[i].data)
+			smallest = left;
+		if (right < size && nodes[right].data < nodes[smallest].data)
+			smallest = right;
+		if (smallest != i)
 		{
-			if (nodes[right].data < nodes[min].data)
-				min = right;
-		}
-		if (min != node)
-		{
-			Swap(nodes[node], nodes[min]);
-			fixHeap(min);
+			Swap(nodes[i], nodes[smallest]);
+			MinFixHeap(smallest);
 		}
 	}
-
-
 
 	void Heap::Swap(Node& a, Node& b)
 	{
@@ -100,5 +96,4 @@ namespace KWaySort
 		a = b;
 		b = temp;
 	}
-
 }
